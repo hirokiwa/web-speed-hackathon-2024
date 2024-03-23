@@ -31,7 +31,10 @@ export const CoverSection: React.FC = () => {
   return (
     <_Wrapper>
       <_ImageWrapper>
-        <_Image src="./cyberToon.webp" alt="Cyber TOON" loading='lazy'/>
+        <picture>
+          <_ImageWebp srcSet="./cyberToon.webp" type="image/webp"/>
+          <_ImageJpg src="./cyberToon.jpg" alt="Cyber TOON" loading='lazy'/>
+        </picture>
       </_ImageWrapper>
       <_SearchLink href="/search">
         <SvgIcon color={Color.MONO_A} height={24} type="Search" width={24} />
@@ -48,7 +51,12 @@ const _ImageWrapper = styled.div`
   width: 100%;
 `;
 
-const _Image = styled.img`
+const _ImageJpg = styled.img`
+  display: inline-block;
+  width: 100%;
+`;
+
+const _ImageWebp = styled.source`
   display: inline-block;
   width: 100%;
 `;

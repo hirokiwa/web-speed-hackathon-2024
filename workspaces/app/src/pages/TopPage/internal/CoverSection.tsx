@@ -32,8 +32,8 @@ export const CoverSection: React.FC = () => {
     <_Wrapper>
       <_ImageWrapper>
         <picture>
-          <_ImageWebp srcSet="./cyberToon.webp" type="image/webp"/>
-          <_ImageJpg src="./cyberToon.jpg" alt="Cyber TOON" loading='lazy'/>
+          <_ImageWebp srcSet="/assets/cyberToon.webp" type="image/webp"/>
+          <_ImageJpg src="/assets/cyberToon.jpg" alt="Cyber TOON" loading='lazy'/>
         </picture>
       </_ImageWrapper>
       <_SearchLink href="/search">

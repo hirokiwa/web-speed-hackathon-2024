@@ -57,7 +57,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="hidden" overflowY="hidden">
             <Flex align="center" as="ul" direction="column" justify="center">
               {_.map(rankingList, (ranking) => (
-                <RankingCard key={ranking.id} bookId={ranking.book.id} />
+                <RankingCard key={ranking.id} book={ranking.book} />
               ))}
             </Flex>
           </Box>

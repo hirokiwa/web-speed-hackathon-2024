@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { styled } from 'styled-components';
-
 import { SvgIcon } from './features/icons/components/SvgIcon';
 import { Link } from './foundation/components/Link';
 import { Text } from './foundation/components/Text';
@@ -11,7 +10,9 @@ import { AuthorDetailPage } from './pages/AuthorDetailPage';
 import { BookDetailPage } from './pages/BookDetailPage';
 import { EpisodeDetailPage } from './pages/EpisodeDetailPage';
 import { SearchPage } from './pages/SearchPage';
-import { TopPage } from './pages/TopPage';
+
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+const TopPage = lazy(() => import('./pages/TopPage/index') as any);
 
 const _BackToTopButton = styled(Link)`
   display: flex;
@@ -25,7 +26,9 @@ const _BackToTopButton = styled(Link)`
 export const Router: React.FC = () => {
   return (
     <Routes>
-      <Route element={<TopPage />} path={'/'} />
+      <React.Suspense fallback="loading...">
+        <Route path="/" Component={TopPage} />
+      </React.Suspense>
       <Route
         element={
           <ActionLayout

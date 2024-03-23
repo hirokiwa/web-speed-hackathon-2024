@@ -19,7 +19,7 @@ export const SearchResult: React.FC<Props> = ({ books, keyword }) => {
       return books;
     }
     return books.filter((book) => {
-      return isContains({ query: keyword, target: book.name }) || isContains({ query: keyword, target: book.nameRuby });
+      return isContains({ query: keyword, target: book.name + book.nameRuby });
     });
   }, [books, keyword]);
 

@@ -6,7 +6,6 @@ import { SvgIcon } from './features/icons/components/SvgIcon';
 import { Link } from './foundation/components/Link';
 import { Text } from './foundation/components/Text';
 import { ActionLayout } from './foundation/layouts/ActionLayout';
-import { CommonLayout } from './foundation/layouts/CommonLayout';
 import { Color, Space, Typography } from './foundation/styles/variables';
 import { AuthorDetailPage } from './pages/AuthorDetailPage';
 import { BookDetailPage } from './pages/BookDetailPage';
@@ -26,9 +25,7 @@ const _BackToTopButton = styled(Link)`
 export const Router: React.FC = () => {
   return (
     <Routes>
-      <Route element={<CommonLayout />} path={'/'}>
-        <Route element={<TopPage />} path={''} />
-      </Route>
+      <Route element={<TopPage />} path={'/'} />
       <Route
         element={
           <ActionLayout

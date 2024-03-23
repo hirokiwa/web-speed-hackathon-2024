@@ -16,6 +16,7 @@ import { Color, Space, Typography } from '../../foundation/styles/variables';
 import { getDayOfWeekStr } from '../../lib/date/getDayOfWeekStr';
 
 import { CoverSection } from './internal/CoverSection';
+import { Footer } from '../../foundation/components/Footer';
 
 const TopPage: React.FC = () => {
   const todayStr = getDayOfWeekStr(moment());
@@ -87,6 +88,7 @@ const TopPageWithSuspense: React.FC = () => {
   return (
     <Suspense fallback={null}>
       <TopPage />
+      <Footer />
     </Suspense>
   );
 };

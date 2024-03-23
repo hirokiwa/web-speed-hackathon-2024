@@ -9,7 +9,6 @@ import { Spacer } from '../../../foundation/components/Spacer';
 import { Text } from '../../../foundation/components/Text';
 import { useImage } from '../../../foundation/hooks/useImage';
 import { Color, Radius, Space, Typography } from '../../../foundation/styles/variables';
-import { useBook } from '../hooks/useBook';
 
 const _Wrapper = styled.li`
   width: 100%;
@@ -28,12 +27,30 @@ const _ImgWrapper = styled.div`
 `;
 
 type Props = {
-  bookId: string;
+  book: {
+    image: {
+      id: string;
+      alt: string;
+    };
+    id: string;
+    name: string;
+    description: string;
+    author: {
+      image: {
+        id: string;
+        alt: string;
+      };
+      id: string;
+      name: string;
+      description: string;
+    };
+    episodes: {
+      id: string;
+    }[];
+  };
 };
 
-export const BookListItem: React.FC<Props> = ({ bookId }) => {
-  const { data: book } = useBook({ params: { bookId } });
-
+export const BookListItem: React.FC<Props> = ({ book }) => {
   const imageUrl = useImage({ height: 64, imageId: book.image.id, width: 64 });
 
   return (
@@ -43,7 +60,7 @@ export const BookListItem: React.FC<Props> = ({ bookId }) => {
         <Flex align="flex-start" gap={Space * 2.5} justify="flex-start">
           {imageUrl != null && (
             <_ImgWrapper>
-              <Image alt={book.name} height={64} objectFit="cover" src={imageUrl} width={64} loading='lazy'/>
+              <Image alt={book.name} height={64} objectFit="cover" src={imageUrl} width={64} loading="lazy" />
             </_ImgWrapper>
           )}
           <Box width="100%">

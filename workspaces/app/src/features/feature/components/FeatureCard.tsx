@@ -7,7 +7,6 @@ import { Link } from '../../../foundation/components/Link';
 import { Text } from '../../../foundation/components/Text';
 import { useImage } from '../../../foundation/hooks/useImage';
 import { Color, Radius, Space, Typography } from '../../../foundation/styles/variables';
-import { useBook } from '../../book/hooks/useBook';
 
 const _Wrapper = styled(Link)`
   display: grid;
@@ -44,11 +43,34 @@ const _AvatarWrapper = styled.div`
 `;
 
 type Props = {
-  bookId: string;
+  book: {
+    image: {
+      id: string;
+      alt: string;
+    };
+    id: string;
+    name: string;
+    description: string;
+    author: {
+      image: {
+        id: string;
+        alt: string;
+      };
+      id: string;
+      name: string;
+      description: string;
+    };
+    episodes: {
+      id: string;
+      name: string;
+      description: string;
+      chapter: number;
+    }[];
+  };
 };
 
-const FeatureCard: React.FC<Props> = ({ bookId }) => {
-  const { data: book } = useBook({ params: { bookId } });
+const FeatureCard: React.FC<Props> = ({ book }) => {
+  const bookId = book.id;
 
   const imageUrl = useImage({ height: 96, imageId: book.image.id, width: 96 });
   const authorImageUrl = useImage({ height: 32, imageId: book.author.image.id, width: 32 });
@@ -57,7 +79,7 @@ const FeatureCard: React.FC<Props> = ({ bookId }) => {
     <_Wrapper href={`/books/${bookId}`}>
       {imageUrl != null && (
         <_ImgWrapper>
-          <Image alt={book.image.alt} height={96} objectFit="cover" src={imageUrl} width={96} loading='lazy'/>
+          <Image alt={book.image.alt} height={96} objectFit="cover" src={imageUrl} width={96} loading="lazy" />
         </_ImgWrapper>
       )}
 
@@ -72,7 +94,14 @@ const FeatureCard: React.FC<Props> = ({ bookId }) => {
         <Flex align="center" gap={Space * 1} justify="flex-end">
           {authorImageUrl != null && (
             <_AvatarWrapper>
-              <Image alt={book.author.name} height={32} objectFit="cover" src={authorImageUrl} width={32} loading='lazy'/>
+              <Image
+                alt={book.author.name}
+                height={32}
+                objectFit="cover"
+                src={authorImageUrl}
+                width={32}
+                loading="lazy"
+              />
             </_AvatarWrapper>
           )}
           <Text color={Color.MONO_100} typography={Typography.NORMAL14}>

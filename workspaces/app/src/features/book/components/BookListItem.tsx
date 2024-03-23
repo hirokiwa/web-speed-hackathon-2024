@@ -35,15 +35,6 @@ type Props = {
     id: string;
     name: string;
     description: string;
-    author: {
-      image: {
-        id: string;
-        alt: string;
-      };
-      id: string;
-      name: string;
-      description: string;
-    };
     episodes: {
       id: string;
     }[];

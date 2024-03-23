@@ -45,6 +45,7 @@ export const BookDetailContent: React.FC<BookDetailContentProps> = ({ book, onCl
           objectFit="cover"
           src={getImageUrl({ format: 'jpg', imageId: book.image.id })}
           width={192}
+          loading='lazy'
         />
         <Stack p={4} spacing={2}>
           <StackItem>
